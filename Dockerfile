@@ -1,11 +1,8 @@
-FROM registry.access.redhat.com/ubi8/nodejs-12:1-52 AS builder
+FROM centos/nodejs-12-centos7 AS builder
 
 WORKDIR /opt/app-root/src
 
-COPY src src
-COPY swagger.config.json .
-COPY tsconfig.json .
-COPY package.json .
+COPY . .
 
 RUN npm install
 RUN npm run build
